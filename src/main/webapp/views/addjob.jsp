@@ -64,11 +64,7 @@
 
 
 				<form action="handleForm" method="post">
-						<div class="mb-3">
-							<label for="postId" class="form-label">Post ID</label>
-							<input type="text" class="form-control" id="postId"
-								   name="postId" required>
-						</div>
+						
 
 						<div class="mb-3">
 							<label for="postProfile" class="form-label">Post Profile</label>
