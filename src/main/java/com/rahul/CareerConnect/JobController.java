@@ -5,9 +5,7 @@ import com.rahul.CareerConnect.service.JobService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -40,4 +38,33 @@ public class JobController {
         return "viewalljobs";
     }
 
+    // # Open Edit page
+
+    @GetMapping("/editjob/{id}")
+    public String editJob(@PathVariable int id, Model model) {
+
+        JobPost job = service.getJob(id);
+
+        model.addAttribute("job", job);
+
+        return "editjob";
+    }
+
+        // # Save updated job
+
+    @PostMapping("/updatejob")
+    public String updateJob(@ModelAttribute JobPost job) {
+
+        service.updateJob(job);
+
+        return "redirect:/viewalljobs";
+    }
+
+    @GetMapping("/deletejob/{id}")
+    public String deleteJob(@PathVariable int id) {
+
+        service.deleteJob(id);
+
+        return "redirect:/viewalljobs";
+    }
 }

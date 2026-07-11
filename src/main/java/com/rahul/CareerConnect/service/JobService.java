@@ -20,4 +20,18 @@ public class JobService {
     public List<JobPost> getAllJobs() {
         return repo.findAll();
     }
+
+    // # feature to fetch and edit and delete the job's
+
+    public JobPost getJob(int id) {
+        return repo.findById(id).orElse(null);
+    }
+
+    public void updateJob(JobPost job) {
+        repo.save(job);
+    }
+
+    public void deleteJob(int id) {
+        repo.deleteById(id);
+    }
 }

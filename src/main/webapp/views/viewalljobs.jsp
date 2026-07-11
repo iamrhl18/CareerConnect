@@ -174,21 +174,27 @@
 
 
 
-                        <div class="job-footer">
+                       <div class="job-footer">
 
-                            <span>
-                                📍 Remote / Flexible
-                            </span>
+                           <span>
+                               📍 Remote / Flexible
+                           </span>
 
+                           <div>
 
-                            <a href="#" class="apply-btn">
+                               <a href="/editjob/${jobPost.postId}" class="btn btn-warning btn-sm">
+                                   ✏ Edit
+                               </a>
 
-                                Apply →
+                               <a href="/deletejob/${jobPost.postId}"
+                                  class="btn btn-danger btn-sm"
+                                  onclick="return confirm('Are you sure you want to delete this job?');">
+                                   🗑 Delete
+                               </a>
 
-                            </a>
+                           </div>
 
-
-                        </div>
+                       </div>
 
 
                     </div>
