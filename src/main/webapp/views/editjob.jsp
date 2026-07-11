@@ -26,11 +26,11 @@
 <section class="page-header">
 
     <h2>
-        Create New Opportunity 🚀
+        Edit Job ✏️
     </h2>
 
     <p>
-        Connect with talented people and build your team.
+        Update the job details below.
     </p>
 
 </section>
@@ -52,26 +52,119 @@
 
 
 					<h3>
-						Post a Job
-					</h3>
+                        Edit Job
+                    </h3>
 
-
-					<p>
-						Fill the details below to publish your opening.
-					</p>
+                    <p>
+                        Update the job information.
+                    </p>
 
 				</div>
 
 
 				<form action="/updatejob" method="post">
 
-				        <input type="hidden" name="postId" value="${job.postId}">
+				        <input type="hidden"
+                               name="postId"
+                               value="${job.postId}">
 
 
 						<div class="mb-3">
 							<label for="postProfile" class="form-label">Post Profile</label>
 							<input type="text" class="form-control" id="postProfile" name="postProfile" value="${job.postProfile}" required>
 						</div>
+
+						<div class="mb-3">
+                            <label class="form-label">Company Name</label>
+                            <input type="text"
+                                   class="form-control"
+                                   name="companyName"
+                                   placeholder="e.g. Google"
+                                   value="${job.companyName}"
+                                   required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Category</label>
+
+                            <select class="form-select" name="category">
+
+                                <option value="Software Development"
+                                    ${job.category == 'Software Development' ? 'selected' : ''}>
+                                    Software Development
+                                </option>
+
+                                <option value="AI / ML"
+                                    ${job.category == 'AI / ML' ? 'selected' : ''}>
+                                    AI / ML
+                                </option>
+
+                                <option value="Data Science"
+                                    ${job.category == 'Data Science' ? 'selected' : ''}>
+                                    Data Science
+                                </option>
+
+                                <option value="Cloud Computing"
+                                    ${job.category == 'Cloud Computing' ? 'selected' : ''}>
+                                    Cloud Computing
+                                </option>
+
+                                <option value="Cyber Security"
+                                    ${job.category == 'Cyber Security' ? 'selected' : ''}>
+                                    Cyber Security
+                                </option>
+
+                                <option value="DevOps"
+                                    ${job.category == 'DevOps' ? 'selected' : ''}>
+                                    DevOps
+                                </option>
+
+                                <option value="UI/UX"
+                                    ${job.category == 'UI/UX' ? 'selected' : ''}>
+                                    UI/UX
+                                </option>
+
+                                <option value="Mobile Development"
+                                    ${job.category == 'Mobile Development' ? 'selected' : ''}>
+                                    Mobile Development
+                                </option>
+
+                            </select>
+                        </div>
+                        <div class="mb-3">
+
+                        <label class="form-label">
+                        Job Type
+                        </label>
+
+                        <select class="form-select"
+                                name="jobType">
+
+                            <option value="Full Time"
+                                ${job.jobType == 'Full Time' ? 'selected' : ''}>
+                                Full Time
+                            </option>
+
+                            <option value="Part Time"
+                                ${job.jobType == 'Part Time' ? 'selected' : ''}>
+                                Part Time
+                            </option>
+
+                            <option value="Internship"
+                                ${job.jobType == 'Internship' ? 'selected' : ''}>
+                                Internship
+                            </option>
+
+                            <option value="Contract"
+                                ${job.jobType == 'Contract' ? 'selected' : ''}>
+                                Contract
+                            </option>
+
+                        </select>
+
+                        </div>
+
+
 
 						<div class="mb-3">
 							<label for="postDesc" class="form-label">Post Description</label>
@@ -83,6 +176,173 @@
 								Experience</label>
 							<input type="number" class="form-control" id="reqExperience" name="reqExperience" value="${job.reqExperience}" required>
 						</div>
+
+						<div class="mb-3">
+
+                        <label class="form-label">
+                        Work Mode
+                        </label>
+
+                        <select class="form-select"
+                                name="workMode">
+
+                            <option value="Remote"
+                                ${job.workMode == 'Remote' ? 'selected' : ''}>
+                                Remote
+                            </option>
+
+                            <option value="Hybrid"
+                                ${job.workMode == 'Hybrid' ? 'selected' : ''}>
+                                Hybrid
+                            </option>
+
+                            <option value="Onsite"
+                                ${job.workMode == 'Onsite' ? 'selected' : ''}>
+                                Onsite
+                            </option>
+
+                        </select>
+
+                        </div>
+
+
+
+
+                        <div class="row">
+
+                        <div class="col">
+
+                        <label class="form-label">
+                        Salary
+                        </label>
+
+                        <input
+                        type="text"
+                        class="form-control"
+                        name="salary"
+                        value="${job.salary}"
+                        >
+
+                        </div>
+
+                        <div class="col">
+
+                        <label class="form-label">
+                        Location
+                        </label>
+
+                        <input
+                        type="text"
+                        class="form-control"
+                        name="location"
+                        value="${job.location}"
+                        >
+
+                        </div>
+
+                        </div>
+
+                        <div class="mb-3">
+
+                        <label class="form-label">
+                        Company Website
+                        </label>
+
+                        <input
+                        type="url"
+                        class="form-control"
+                        name="companyWebsite" value="${job.companyWebsite}">
+
+                        </div>
+
+                        <div class="mb-3">
+
+                        <label class="form-label">
+                        Company Logo URL
+                        </label>
+
+                        <input
+                        type="url"
+                        class="form-control"
+                        name="companyLogo" value="${job.companyLogo}">
+
+                        </div>
+
+                        <div class="row">
+
+                        <div class="col">
+
+                        <label class="form-label">
+                        Posted Date
+                        </label>
+
+                        <input
+                        type="date"
+                        class="form-control"
+                        name="postedDate"
+                        value="${job.postedDate}">
+
+                        </div>
+
+                        <div class="col">
+
+                        <label class="form-label">
+                        Last Date To Apply
+                        </label>
+
+                        <input
+                        type="date"
+                        class="form-control"
+                        name="lastDateToApply"
+                        value="${job.lastDateToApply}">
+
+                        </div>
+
+                        </div>
+
+                        <div class="mb-3">
+
+                        <label class="form-label">
+                        Recruiter Email
+                        </label>
+
+                        <input
+                        type="email"
+                        class="form-control"
+                        name="recruiterEmail" value="${job.recruiterEmail}">
+
+                        </div>
+
+                        <div class="mb-3">
+
+                        <label class="form-label">
+                        Apply URL
+                        </label>
+
+                        <input
+                        type="url"
+                        class="form-control"
+                        name="applyUrl" value="${job.applyUrl}">
+
+                        </div>
+
+                        <div class="form-check">
+
+                        <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="active"
+                        ${job.active ? 'checked' : ''}>
+
+                        <label class="form-check-label">
+
+                        Active Job
+
+                        </label>
+
+                        </div>
+
+
 
 						<div class="mb-3">
 							<label for="postTechStack" class="form-label">Tech Stack</label>

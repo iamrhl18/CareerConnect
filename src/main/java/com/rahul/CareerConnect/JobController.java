@@ -67,4 +67,14 @@ public class JobController {
 
         return "redirect:/viewalljobs";
     }
+
+    @GetMapping("/job/{id}")
+    public String viewJobDetails(@PathVariable int id, Model model) {
+
+        JobPost job = service.getJob(id);
+
+        model.addAttribute("job", job);
+
+        return "jobdetails";
+    }
 }

@@ -2,6 +2,7 @@
          pageEncoding="UTF-8" isELIgnored="false"%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -19,6 +20,7 @@
 <body>
 
 <jsp:include page="common/navbar.jsp"/>
+
 <section class="page-header">
 
     <h2>
@@ -116,90 +118,174 @@
 
     <div class="row row-cols-1 row-cols-md-2">
         <c:forEach var="jobPost" items="${jobPosts}" varStatus="status">
-
             <div class="col mb-4">
-                <div class="card job-card h-100" style="animation-delay: ${status.index * 0.08}s;">
+
+                <div class="card shadow-sm border-0 rounded-4 h-100 job-card">
+
                     <div class="card-body">
 
+                        <!-- Header -->
 
-                        <div class="job-top">
+                        <div class="d-flex justify-content-between">
 
+                            <div class="d-flex">
 
-                            <div>
+                                <c:set var="logoFallback"
+                                       value="https://ui-avatars.com/api/?name=${fn:replace(jobPost.companyName,' ','+')}&background=2563EB&color=fff"/>
 
-                                <h5 class="card-title">
-                                    ${jobPost.postProfile}
-                                </h5>
+                                <img
+                                        src="${empty jobPost.companyLogo ? logoFallback : jobPost.companyLogo}"
+                                        width="60"
+                                        height="60"
+                                        class="rounded me-3"
+                                        onerror="this.onerror=null;this.src='${logoFallback}'">
 
+                                <div>
 
-                                <p class="job-company">
-                                    🏢 CareerConnect Partner
-                                </p>
+                                    <h5 class="mb-1">
+                                        ${jobPost.companyName}
+                                    </h5>
+
+                                    <h6 class="text-dark">
+                                        ${jobPost.postProfile}
+                                    </h6>
+
+                                    <span class="badge bg-primary">
+
+                                        ${jobPost.category}
+
+                                    </span>
+
+                                </div>
 
                             </div>
 
+                            <div>
 
+                                <c:choose>
 
-                            <span class="badge-experience">
+                                    <c:when test="${jobPost.active}">
 
-                                ${jobPost.reqExperience} yrs
+                                        <span class="badge bg-success">
 
-                            </span>
+                                            Active
 
+                                        </span>
+
+                                    </c:when>
+
+                                    <c:otherwise>
+
+                                        <span class="badge bg-danger">
+
+                                            Closed
+
+                                        </span>
+
+                                    </c:otherwise>
+
+                                </c:choose>
+
+                            </div>
 
                         </div>
 
+                        <hr>
 
+                        <!-- Job Information -->
 
-                        <p class="card-text job-description">
+                        <div class="row text-center">
 
-                            ${jobPost.postDesc}
+                            <div class="col-6 col-lg-3">
 
-                        </p>
+                                📍<br>
 
+                                <strong>${jobPost.location}</strong>
 
+                            </div>
 
-                        <div class="tech-stack">
+                            <div class="col-6 col-lg-3">
 
-                            <c:forEach var="tech"
-                                       items="${jobPost.postTechStack}">
+                                💼<br>
+
+                                <strong>${jobPost.jobType}</strong>
+
+                            </div>
+
+                            <div class="col-6 col-lg-3">
+
+                                🏠<br>
+
+                                <strong>${jobPost.workMode}</strong>
+
+                            </div>
+
+                            <div class="col-6 col-lg-3">
+
+                                💰<br>
+
+                                <strong>${jobPost.salary}</strong>
+
+                            </div>
+
+                        </div>
+
+                        <hr>
+
+                        <!-- Skills -->
+
+                        <div class="tech-stack mb-3">
+
+                            <c:forEach var="tech" items="${jobPost.postTechStack}">
 
                                 <span class="tech-pill">
+
                                     ${tech}
+
                                 </span>
 
                             </c:forEach>
 
                         </div>
 
+                        <!-- Buttons -->
 
+                        <div class="d-flex justify-content-between">
 
-                       <div class="job-footer">
+                            <a href="/job/${jobPost.postId}"
+                               class="btn btn-primary">
 
-                           <span>
-                               📍 Remote / Flexible
-                           </span>
+                                👁 View Details
 
-                           <div>
+                            </a>
 
-                               <a href="/editjob/${jobPost.postId}" class="btn btn-warning btn-sm">
-                                   ✏ Edit
-                               </a>
+                            <div>
 
-                               <a href="/deletejob/${jobPost.postId}"
-                                  class="btn btn-danger btn-sm"
-                                  onclick="return confirm('Are you sure you want to delete this job?');">
-                                   🗑 Delete
-                               </a>
+                                <a href="/editjob/${jobPost.postId}"
+                                   class="btn btn-warning">
 
-                           </div>
+                                    ✏ Edit
 
-                       </div>
+                                </a>
 
+                                <a href="/deletejob/${jobPost.postId}"
+                                   class="btn btn-danger"
+                                   onclick="return confirm('Delete this job?')">
+
+                                    🗑 Delete
+
+                                </a>
+
+                            </div>
+
+                        </div>
 
                     </div>
+
                 </div>
+
             </div>
+
         </c:forEach>
     </div>
 </div>

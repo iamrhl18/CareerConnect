@@ -1,4 +1,5 @@
 package com.rahul.CareerConnect.model;
+import java.time.LocalDate;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,6 +21,36 @@ public class JobPost {
     private String postDesc;
     private int reqExperience;
     private List<String> postTechStack;
+
+
+    private String companyName;
+
+    @Column(length = 1000)
+    private String companyLogo;
+
+    @Column(length = 1000)
+    private String companyWebsite;
+
+    private String location;
+
+    private String jobType;          // Full Time, Internship...
+
+    private String workMode;         // Remote, Hybrid, Onsite
+
+    private String salary;
+
+    private String recruiterEmail;
+
+    @Column(length = 1000)
+    private String applyUrl;
+
+    private String category;
+
+    private LocalDate postedDate;
+
+    private LocalDate lastDateToApply;
+
+    private boolean active;
 
 
 }

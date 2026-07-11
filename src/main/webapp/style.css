@@ -2216,3 +2216,47 @@ body {
 .navbar .btn-primary{
     padding:8px 22px;
 }
+
+/* ==============================
+   JOB TAGS — brand-matched badges
+   (replaces default Bootstrap bg-primary/success/info/warning)
+================================ */
+
+.job-tag{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    font-size:0.82rem;
+    font-weight:600;
+    padding:6px 14px;
+    border-radius:999px;
+    margin-right:8px;
+    margin-bottom:8px;
+}
+
+.job-tag-location{
+    background:#EFF6FF;
+    color:#2563EB;
+}
+
+.job-tag-type{
+    background:#ECFDF5;
+    color:#059669;
+}
+
+.job-tag-mode{
+    background:#F5F3FF;
+    color:#7C3AED;
+}
+
+.job-tag-salary{
+    background:#FFFBEB;
+    color:#B45309;
+}
+
+/* Company logo — consistent crop + neutral placeholder background,
+   in case an image is slow to load or comes in an odd aspect ratio */
+.company-logo{
+    object-fit:cover;
+    background-color:#F1F5F9;
+}

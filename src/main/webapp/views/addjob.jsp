@@ -72,6 +72,51 @@
 						</div>
 
 						<div class="mb-3">
+                            <label class="form-label">Company Name</label>
+                            <input type="text"
+                                   class="form-control"
+                                   name="companyName"
+                                   placeholder="e.g. Google"
+                                   required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Category</label>
+
+                            <select class="form-select" name="category">
+
+                                <option>Software Development</option>
+                                <option>AI / ML</option>
+                                <option>Data Science</option>
+                                <option>Cloud Computing</option>
+                                <option>Cyber Security</option>
+                                <option>DevOps</option>
+                                <option>UI/UX</option>
+                                <option>Mobile Development</option>
+
+                            </select>
+                        </div>
+                        <div class="mb-3">
+
+                        <label class="form-label">
+                        Job Type
+                        </label>
+
+                        <select class="form-select"
+                                name="jobType">
+
+                        <option>Full Time</option>
+                        <option>Part Time</option>
+                        <option>Internship</option>
+                        <option>Contract</option>
+
+                        </select>
+
+                        </div>
+
+
+
+						<div class="mb-3">
 							<label for="postDesc" class="form-label">Post Description</label>
 							<textarea class="form-control" id="postDesc" name="postDesc" rows="2" required></textarea>
 						</div>
@@ -81,6 +126,158 @@
 								Experience</label>
 							<input type="number" class="form-control" id="reqExperience" name="reqExperience" required>
 						</div>
+
+						<div class="mb-3">
+
+                        <label class="form-label">
+                        Work Mode
+                        </label>
+
+                        <select class="form-select"
+                                name="workMode">
+
+                        <option>Remote</option>
+                        <option>Hybrid</option>
+                        <option>Onsite</option>
+
+                        </select>
+
+                        </div>
+
+
+
+
+                        <div class="row">
+
+                        <div class="col">
+
+                        <label class="form-label">
+                        Salary
+                        </label>
+
+                        <input
+                        type="text"
+                        class="form-control"
+                        name="salary"
+                        placeholder="₹12-18 LPA">
+
+                        </div>
+
+                        <div class="col">
+
+                        <label class="form-label">
+                        Location
+                        </label>
+
+                        <input
+                        type="text"
+                        class="form-control"
+                        name="location"
+                        placeholder="Bangalore">
+
+                        </div>
+
+                        </div>
+
+                        <div class="mb-3">
+
+                        <label class="form-label">
+                        Company Website
+                        </label>
+
+                        <input
+                        type="url"
+                        class="form-control"
+                        name="companyWebsite">
+
+                        </div>
+
+                        <div class="mb-3">
+
+                        <label class="form-label">
+                        Company Logo URL
+                        </label>
+
+                        <input
+                        type="url"
+                        class="form-control"
+                        name="companyLogo">
+
+                        </div>
+
+                        <div class="row">
+
+                        <div class="col">
+
+                        <label class="form-label">
+                        Posted Date
+                        </label>
+
+                        <input
+                        type="date"
+                        class="form-control"
+                        name="postedDate">
+
+                        </div>
+
+                        <div class="col">
+
+                        <label class="form-label">
+                        Last Date To Apply
+                        </label>
+
+                        <input
+                        type="date"
+                        class="form-control"
+                        name="lastDateToApply">
+
+                        </div>
+
+                        </div>
+
+                        <div class="mb-3">
+
+                        <label class="form-label">
+                        Recruiter Email
+                        </label>
+
+                        <input
+                        type="email"
+                        class="form-control"
+                        name="recruiterEmail">
+
+                        </div>
+
+                        <div class="mb-3">
+
+                        <label class="form-label">
+                        Apply URL
+                        </label>
+
+                        <input
+                        type="url"
+                        class="form-control"
+                        name="applyUrl">
+
+                        </div>
+
+                        <div class="form-check">
+
+                        <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="active"
+                        checked>
+
+                        <label class="form-check-label">
+
+                        Active Job
+
+                        </label>
+
+                        </div>
+
+
 
 						<div class="mb-3">
 							<label for="postTechStack" class="form-label">Tech Stack</label>
