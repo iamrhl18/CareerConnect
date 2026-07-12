@@ -1,4 +1,4 @@
-package com.rahul.CareerConnect;
+package com.rahul.CareerConnect.controller;
 
 import com.rahul.CareerConnect.model.JobPost;
 import com.rahul.CareerConnect.service.JobService;
@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 
@@ -32,9 +33,29 @@ public class JobController {
     }
 
     @RequestMapping("viewalljobs")
-    public String veiwJobs(Model m){
-        List<JobPost> jobs = service.getAllJobs();
-        m.addAttribute("jobPosts",jobs);
+    public String viewJobs(
+
+            @RequestParam(defaultValue = "0") int page,
+
+            @RequestParam(required = false, defaultValue = "") String keyword,
+
+            Model model) {
+
+        Page<JobPost> jobPage = service.getJobsByPage(page, keyword);
+
+        model.addAttribute("jobPosts", jobPage.getContent());
+
+        model.addAttribute("currentPage", page);
+
+        model.addAttribute("totalPages", jobPage.getTotalPages());
+
+        int startPage = Math.max(0, page - 2);
+        int endPage = Math.min(jobPage.getTotalPages() - 1, page + 2);
+
+        model.addAttribute("startPage", startPage);
+        model.addAttribute("endPage", endPage);
+        model.addAttribute("keyword", keyword);
+
         return "viewalljobs";
     }
 
@@ -77,4 +98,6 @@ public class JobController {
 
         return "jobdetails";
     }
+
+
 }

@@ -54,29 +54,81 @@
 
 
 
-        <div class="search-bar">
+        <form action="/viewalljobs" method="get">
 
+            <div class="row g-3">
 
-            <div class="search-input">
+                <div class="col-md-4">
 
-                🔍
+                    <input
+                            type="text"
+                            name="keyword"
+                            value="${keyword}"
+                            class="form-control"
+                            placeholder="🔍 Search jobs, companies...">
 
-                <input
-                    type="text"
-                    placeholder="Search jobs, skills, companies...">
+                </div>
+
+                <div class="col-md-2">
+
+                    <input
+                            type="text"
+                            name="company"
+                            class="form-control"
+                            placeholder="Company">
+
+                </div>
+
+                <div class="col-md-2">
+
+                    <input
+                            type="text"
+                            name="location"
+                            class="form-control"
+                            placeholder="Location">
+
+                </div>
+
+                <div class="col-md-2">
+
+                    <select
+                            name="workMode"
+                            class="form-select">
+
+                        <option value="">
+                            Work Mode
+                        </option>
+
+                        <option>
+                            Remote
+                        </option>
+
+                        <option>
+                            Hybrid
+                        </option>
+
+                        <option>
+                            Onsite
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <div class="col-md-2">
+
+                    <button
+                            class="btn btn-primary w-100">
+
+                        Search
+
+                    </button>
+
+                </div>
 
             </div>
 
-
-            <button class="search-btn">
-
-                Search
-
-            </button>
-
-
-        </div>
-
+        </form>
 
 
         <div class="filter-tags">
@@ -116,7 +168,26 @@
 
 <div class="container mt-5">
 
+    <h5 class="mb-4">
+            Found ${jobPosts.size()} job(s)
+    </h5>
+
+    <c:if test="${empty jobPosts}">
+
+            <div class="alert alert-warning text-center mt-4">
+
+                <h4>😔 No Jobs Found</h4>
+
+                <p>Try another keyword.</p>
+
+            </div>
+
+    </c:if>
+
+
+
     <div class="row row-cols-1 row-cols-md-2">
+
         <c:forEach var="jobPost" items="${jobPosts}" varStatus="status">
             <div class="col mb-4">
 
@@ -289,6 +360,55 @@
         </c:forEach>
     </div>
 </div>
+
+<nav class="mt-5">
+
+    <ul class="pagination justify-content-center">
+
+        <!-- Previous -->
+
+        <li class="page-item ${currentPage == 0 ? 'disabled' : ''}">
+
+            <a class="page-link"
+               href="/viewalljobs?page=${currentPage > 0 ? currentPage - 1 : 0}">
+
+                ← Previous
+
+            </a>
+
+        </li>
+
+        <c:forEach begin="${startPage}" end="${endPage}" var="i">
+
+            <li class="page-item ${i == currentPage ? 'active' : ''}">
+
+                <a class="page-link"
+                   href="/viewalljobs?page=${i}">
+
+                    ${i + 1}
+
+                </a>
+
+            </li>
+
+        </c:forEach>
+
+        <!-- Next -->
+
+        <li class="page-item ${currentPage == totalPages-1 ? 'disabled' : ''}">
+
+            <a class="page-link"
+               href="/viewalljobs?page=${currentPage < totalPages-1 ? currentPage + 1 : totalPages-1}">
+
+                Next →
+
+            </a>
+
+        </li>
+
+    </ul>
+
+</nav>
 
 <jsp:include page="common/footer.jsp"/>
 

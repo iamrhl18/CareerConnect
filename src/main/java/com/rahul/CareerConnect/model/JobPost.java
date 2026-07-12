@@ -52,5 +52,9 @@ public class JobPost {
 
     private boolean active;
 
+    private String source;
+
+    private String externalJobId;
+
 
 }
